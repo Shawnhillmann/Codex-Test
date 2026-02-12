@@ -41,6 +41,34 @@ python3 -m http.server 3000 --bind 0.0.0.0
 5. Refresh the page and confirm tasks are still there.
 6. Click **Clear completed**.
 
+
+## Why you may not see files on GitHub yet
+Codex created commits in your local working branch (`work`) inside this environment, but GitHub only shows commits that are pushed to your remote repository (usually the `main` branch).
+
+Quick check commands:
+```bash
+git branch -vv
+git remote -v
+```
+
+If `git remote -v` is empty, add your GitHub repo as `origin` first:
+```bash
+git remote add origin https://github.com/<your-username>/<your-repo>.git
+```
+
+Then publish your work:
+```bash
+# Option A: push your current branch and open a PR on GitHub
+git push -u origin work
+
+# Option B: if you want it directly on main
+git checkout main
+git merge work
+git push -u origin main
+```
+
+After push, refresh GitHub and you will see the files/commits.
+
 ## Helpful things to know for future Codex projects
 - Ask for **specific tech** if you want it (React, Next.js, Tailwind, etc.).
 - Ask Codex to also add:
