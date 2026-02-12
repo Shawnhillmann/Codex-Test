@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple To-Do App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>My To-Do List</h1>
+      <p class="subtitle">A tiny app to add, complete, and remove tasks.</p>
+
+      <form id="todo-form" class="todo-form">
+        <label for="todo-input" class="visually-hidden">Add a task</label>
+        <input id="todo-input" type="text" placeholder="What do you need to do?" required maxlength="120" />
+        <button type="submit">Add</button>
+      </form>
+
+      <section class="toolbar" aria-label="Task filters">
+        <button type="button" data-filter="all" class="filter-btn active">All</button>
+        <button type="button" data-filter="open" class="filter-btn">Open</button>
+        <button type="button" data-filter="done" class="filter-btn">Done</button>
+      </section>
+
+      <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+
+      <footer class="footer">
+        <span id="task-count">0 tasks</span>
+        <button id="clear-completed" type="button" class="clear-btn">Clear completed</button>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "simple-todo-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Beginner-friendly to-do app",
+  "scripts": {
+    "dev": "python3 -m http.server 3000 --bind 0.0.0.0",
+    "dev:4173": "python3 -m http.server 4173 --bind 0.0.0.0"
+  }
+}
