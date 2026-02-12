@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Flash Card Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>AI Flash Card Generator</h1>
+      <p class="subtitle">
+        Describe the deck you want, choose how many cards to create, and generate flip-ready flash cards.
+      </p>
+
+      <section class="panel form-panel">
+        <h2>Deck Setup</h2>
+        <form id="generator-form">
+          <label for="deck-topic">Deck topic or prompt</label>
+          <textarea
+            id="deck-topic"
+            rows="3"
+            placeholder="e.g. Introductory Polish Phrases"
+            required
+          ></textarea>
+
+          <div class="row two-col">
+            <div>
+              <label for="card-count">Number of cards</label>
+              <input id="card-count" type="number" min="1" max="100" value="40" required />
+            </div>
+            <div>
+              <label for="temperature">Creativity</label>
+              <input id="temperature" type="number" min="0" max="1" step="0.1" value="0.4" />
+            </div>
+          </div>
+
+          <details>
+            <summary>AI connection settings (OpenAI-compatible)</summary>
+            <label for="api-base-url">API base URL</label>
+            <input id="api-base-url" type="url" value="https://api.openai.com/v1" />
+
+            <label for="api-key">API key</label>
+            <input id="api-key" type="password" placeholder="sk-..." />
+
+            <label for="model">Model</label>
+            <input id="model" type="text" value="gpt-4o-mini" />
+          </details>
+
+          <button type="submit" id="generate-btn">Generate Flash Cards</button>
+        </form>
+
+        <p id="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel deck-panel">
+        <div class="deck-header">
+          <h2>Your Deck</h2>
+          <div>
+            <button id="prev-card" type="button">Previous</button>
+            <button id="next-card" type="button">Next</button>
+          </div>
+        </div>
+
+        <div class="card-wrapper">
+          <button class="flash-card" id="flash-card" type="button" aria-label="Flip flash card">
+            <div class="flash-card-inner">
+              <div class="flash-card-face flash-card-front">
+                <h3>Front</h3>
+                <p id="card-front-text">No card generated yet.</p>
+              </div>
+              <div class="flash-card-face flash-card-back">
+                <h3>Back</h3>
+                <p id="card-back-text">Generate a deck to get started.</p>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <div class="deck-meta">
+          <span id="card-position">Card 0 / 0</span>
+          <button id="shuffle-cards" type="button">Shuffle Deck</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
